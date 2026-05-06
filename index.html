@@ -4,11 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Kigali Quest</title>
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 <body>
-    <nav>
+    <nav class="flex items-center justify-around">
         <span>KigaliQuest</span>
-        <ul>
+        <ul class="flex space-x-8">
             <li>Home</li>
             <li>About</li>
             <li>Activities</li>
@@ -17,60 +18,63 @@
     </nav>
 
     <section>
-        <div class="activities-home">
-            <span>LAND OF A THOUSAND HILLS</span>
-            <h1>Activities to do in Rwanda</h1>
-            <p>Rwanda, known as the "Land of a Thousand Hills," offers a variety of activities for visitors to enjoy. Here are some popular activities to do in Rwanda:</p>
+        <div class="activities-home flex flex-col justify-start w-[80%] mx-auto">
+            <span class="font-bold text-4xl">LAND OF A THOUSAND HILLS</span>
+            <h1 class="font-bold text-2xl">Activities to do in Rwanda</h1>
+            <p class="w-1/2">Rwanda, known as the "Land of a Thousand Hills," offers a variety of activities for visitors to enjoy. Here are some popular activities to do in Rwanda.</p>
         </div>
 
-        <div class="activities-about">
+        <div class="activities-about flex flex-col justify-center gap-6 w-[80%] mx-auto">
             <div>
-                <span>There are many activities</span>
+                <span class="font-bold text-xl">There are many activities</span>
                 <p>Have Fun and Enjoy Rwanda -  from gorilla treks to lakeside sunsets, every moment is unforgettable.</p>
             </div>
             <div>
-                <span>Why Visit Rwanda?</span>
+                <span class="font-bold text-xl">Why Visit Rwanda?</span>
                 <p>One of Africa's safest and cleanest countries. Pristine national parks, world-class gorilla trekking, vibrant cities, and warm hospitality await you.</p>
             </div>
         </div>
 
-        <div class="search-bar">
-            <span>Search the activities:</span>
-            <input type="text" placeholder="Search activities">
+        <div class="search-bar flex flex-col justify-center w-[80%] mx-auto">
+            <span class="font-bold text-xl">Search the activities:</span>
+            <div class="flex justify-end gap-4">
+                <input type="text" placeholder="Search activities" class="border-2 border-gray-800 w-2/3 py-1 rounded-md">
+                <button class="border-2 border-gray-800 py-1 px-4 rounded-full">Search</button>
+            </div>
+            
             <ul>
                 <li>Kigali City Tour</li>
                 <li>Gorilla Trecking</li>
                 <li>Nyungwe Canopy Walk</li>
                 <li>Lake Kivu Sailing</li>
             </ul>
-            <button>Search</button>
         </div>
 
-        <div class="activities-grid">
-            <div>
+        <div class="activities-grid grid grid-cols-1 lg:grid-cols-2 gap-8 w-[80%] mx-auto">
+            <div class="flex flex-col border-2 border-gray-800 p-4 rounded-xl">
                 <img src="" alt="">
-                <h2>Kigali City Tour</h2>
+                <h2 class="font-bold text-xl mb-2">Kigali City Tour</h2>
                 <p>Explore Africa's cleanest city — vibrant markets, the Genocide Memorial, and world-class coffee.</p>
             </div>
-            <div>
+            <div class="flex flex-col border-2 border-gray-800 p-4 rounded-xl">
                 <img src="" alt="">
-                <h2>Gorilla Trecking</h2>
+                <h2 class="font-bold text-xl mb-2">Gorilla Trecking</h2>
                 <p>Experience the thrill of trekking through lush forests to see endangered mountain gorillas in their natural habitat.</p>
             </div>
-            <div>
+            <div class="flex flex-col border-2 border-gray-800 p-4 rounded-xl">
                 <img src="" alt="">
-                <h2>Nyungwe Canopy Walk</h2>
+                <h2 class="font-bold text-xl mb-2">Nyungwe Canopy Walk</h2>
                 <p>Walk above the treetops on a canopy walkway in Nyungwe Forest, home to diverse wildlife and stunning views.</p>
             </div>
-            <div>
+            <div class="flex flex-col border-2 border-gray-800 p-4 rounded-xl">
                 <img src="" alt="">
-                <h2>Lake Kivu Sailing</h2>
+                <h2 class="font-bold text-xl mb-2">Lake Kivu Sailing</h2>
                 <p>Enjoy sailing on the serene waters of Lake Kivu, surrounded by picturesque landscapes and charming lakeside towns.</p>
             </div>
         </div>
     </section>
 
-    <footer>
+    <footer class="flex justify-center">
         <p>&copy; 2024 Activities in Rwanda. All rights reserved.</p>
     </footer>
 </body>
