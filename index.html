@@ -130,5 +130,100 @@
     <footer class="flex justify-center bg-gray-600 py-8 bg-gray-300">
         <p class="text-gray-300">&copy; 2024 Activities in Rwanda. All rights reserved.</p>
     </footer>
+    <script>
+        const navLinks = document.querySelectorAll("nav ul li");
+        navLinks.forEach(link => {
+          link.addEventListener("click", () => {
+            navLinks.forEach(l => l.classList.remove("font-bold", "text-emerald-700"));
+            link.classList.add("font-bold", "text-emerald-700");
+          });
+        });
+
+        const modeBtn = document.querySelector("nav button");
+        let darkMode = false;
+      
+        modeBtn.addEventListener("click", () => {
+          darkMode = !darkMode;
+          modeBtn.textContent = darkMode ? "Light" : "Dark";
+      
+          document.body.classList.toggle("bg-gray-200", !darkMode);
+          document.body.classList.toggle("bg-gray-900", darkMode);
+          document.body.classList.toggle("text-white", darkMode);
+      
+          const nav = document.querySelector("nav");
+          nav.classList.toggle("bg-white/60", !darkMode);
+          nav.classList.toggle("bg-gray-900/80", darkMode);
+          nav.classList.toggle("text-white", darkMode);
+      
+          document.querySelectorAll(".activities-about .bg-white").forEach(card => {
+            card.classList.toggle("bg-white", !darkMode);
+            card.classList.toggle("bg-gray-800", darkMode);
+            card.classList.toggle("text-white", darkMode);
+            card.classList.toggle("border-gray-700", darkMode);
+          });
+      
+          document.querySelectorAll(".activities-info .bg-white").forEach(card => {
+            card.classList.toggle("bg-white", !darkMode);
+            card.classList.toggle("bg-gray-800", darkMode);
+          });
+          document.querySelectorAll(".activities-info h2").forEach(el => {
+            el.classList.toggle("text-white", darkMode);
+          });
+      
+
+          const footer = document.querySelector("footer");
+          footer.classList.toggle("bg-gray-300", !darkMode);
+          footer.classList.toggle("bg-gray-950", darkMode);
+        });
+  
+        const searchInput  = document.querySelector(".search-bar input");
+        const searchBtn    = document.querySelector(".search-bar .btn");
+        const suggestionList = document.querySelector(".search-bar ul");
+        const activityCards  = document.querySelectorAll(".activities-grid > div");
+      
+
+        function filterCards(keyword) {
+          const term = keyword.trim().toLowerCase();
+          activityCards.forEach(card => {
+            const title = card.querySelector("h2")?.textContent.toLowerCase() ?? "";
+            const desc  = card.querySelector("p")?.textContent.toLowerCase() ?? "";
+            const match = !term || title.includes(term) || desc.includes(term);
+            card.style.display = match ? "" : "none";
+          });
+        }
+      
+        searchBtn.addEventListener("click", () => {
+          filterCards(searchInput.value);
+        });
+      
+        searchInput.addEventListener("input", () => {
+          filterCards(searchInput.value);
+        });
+
+        searchInput.addEventListener("focus", () => {
+          suggestionList.classList.remove("hidden");
+        });
+        searchInput.addEventListener("blur", () => {
+          setTimeout(() => suggestionList.classList.add("hidden"), 150);
+        });
+      
+        suggestionList.querySelectorAll("li").forEach(tag => {
+          tag.style.cursor = "pointer";
+          tag.classList.add(
+            "bg-emerald-100", "text-emerald-800", "px-3", "py-1",
+            "rounded-full", "text-xs", "font-semibold", "hover:bg-emerald-200"
+          );
+          tag.addEventListener("mousedown", (e) => {
+            e.preventDefault(); 
+            searchInput.value = tag.textContent;
+            filterCards(tag.textContent);
+            suggestionList.classList.add("hidden");
+          });
+        });
+
+        searchInput.addEventListener("keydown", (e) => {
+          if (e.key === "Enter") filterCards(searchInput.value);
+        });
+      </script>
 </body>
 </html>
